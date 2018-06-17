@@ -1,0 +1,15 @@
+div.header {
+  height: 100px;
+  background-color: bisque;
+  display: flex;
+  align-items: center;
+  position: relative; }
+  div.header span.text {
+    font-size: 50px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold; }
+  div.header button {
+    position: absolute;
+    right: 20px; }

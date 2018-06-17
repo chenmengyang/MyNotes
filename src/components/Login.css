@@ -1,0 +1,13 @@
+.login-form {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%); }
+  .login-form .login-form-forgot {
+    float: center; }
+  .login-form .login-form-button {
+    width: 100%; }
+  .login-form .errorMsg {
+    color: red; }

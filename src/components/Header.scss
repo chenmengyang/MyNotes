@@ -1,0 +1,19 @@
+div.header {
+    height: 100px;
+    background-color: bisque;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    position: relative;
+    span.text {
+        font-size: 50px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: bold;
+    }
+    button {
+        position: absolute;
+        right: 20px;
+    }
+}
