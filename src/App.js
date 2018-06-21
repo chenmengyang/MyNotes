@@ -18,12 +18,20 @@ class App extends Component {
         <UserProvider>
           <LoginForm />
           <Header />
-          <ClProvider>
-            <Switch>
-              <Route exact path="/" component={Clposts} />
-              <Route path="/post/:pid" component={ClPost} />
-            </Switch>
-          </ClProvider>
+          <UserConsumer>
+            {({currentUser,}) => {
+              if (currentUser) {
+                return (
+                  <Switch>
+                    <ClProvider>
+                      <Route exact path="/" component={Clposts} />
+                      <Route path="/post/:pid" component={ClPost} />
+                    </ClProvider>
+                  </Switch>
+                );
+              }
+            }}
+          </UserConsumer>
         </UserProvider>
     );
   }

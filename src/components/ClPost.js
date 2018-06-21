@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Card, Spin, } from 'antd';
+import { Card, Spin, Col, Row, } from 'antd';
 import { ClConsumer, } from "../contexts"
 import './Clpost.css'
 
@@ -22,6 +22,10 @@ export class ClPost extends Component {
     }
   }
 
+  randomValue() {
+    return Math.round(Math.random()*50);
+  }
+
   render() {
     return (
       <ClConsumer>
@@ -30,19 +34,17 @@ export class ClPost extends Component {
             if (Object.keys(posts).length) {
                 let post = posts[this.props.match.params.pid];
                 let photos = post.photoUrls;
-                result = photos.map((url, index) => <Card
-                    key={`dgy_image_card_${index}`}
-                    hoverable
-                    // style={{ width: 800 }}
-                    cover={<img alt="example" src={url} />}
-                >
-                </Card>)
+                result = photos.map((url, index) => <Col className='image-col' lg={8} sm={12} xs={24}>
+                  <Card cover={<img alt="example" src={url} />}/>
+                </Col>)
             }
-            return result;
+            return <Row gutter={{ xs: 2, sm: 4, md: 8, lg: 16 }} className={`superrow`}>
+              {result}
+            </Row>;
         }}
       </ClConsumer>
     )
   }
 }
 
-export default ClPost
+export default ClPost;

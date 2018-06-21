@@ -15,7 +15,7 @@ export class Logout extends Component {
         {({ currentUser, signOut, }) => {
             if (currentUser) {
                 return (<div className="header">
-                    <span className="text">My Notes</span>
+                    <span className="text">精貨</span>
                     <Button onClick={signOut}>Logout</Button>
                 </div>)
             }

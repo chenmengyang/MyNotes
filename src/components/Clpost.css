@@ -1,4 +1,9 @@
-div.ant-card {
-  width: 70%;
-  margin-left: 15%;
-  margin-bottom: 100px; }
+.visible-desktop {
+  display: none; }
+  @media (min-width: 1200px) {
+    .visible-desktop {
+      display: block; } }
+
+div.superrow {
+  width: 90%;
+  left: 5%; }

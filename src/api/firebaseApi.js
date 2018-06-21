@@ -51,7 +51,7 @@ export const onAuthStateChanged = (user) => firebase.auth().onAuthStateChanged(u
 
 // get all cl-posts
 export const getClPosts = async () => {
-    let res = await queryFirestore('cl-dgy-2018-06-20T19:24:34.484Z');
+    let res = await queryFirestore('cl-dgy');
     return res;
 }
 
