@@ -9,6 +9,9 @@ var config = {
 };
 
 firebase.initializeApp(config);
+const db = firebase.firestore();
+const settings = { timestampsInSnapshots: true };
+db.settings(settings);
 
 /**
  * login to admin app with email and password
@@ -46,6 +49,11 @@ export const currentUser = firebase.auth().currentUser;
 // auth state listener
 export const onAuthStateChanged = (user) => firebase.auth().onAuthStateChanged(user);
 
+// get all cl-posts
+export const getClPosts = async () => {
+    let res = await queryFirestore('cl-dgy-2018-06-20T19:24:34.484Z');
+    return res;
+}
 
 // Create an exception class UserException for throwing
 class UserException {
@@ -61,3 +69,35 @@ class UserException {
         return this.code + ': "' + this.message + '"';
     }
 }
+
+/**
+ * query firestore
+ * @param {string} collection       firestore collection name
+ * @param {string} document         firestore document id under collection
+ * @returns {Promise}               document(s) object
+ */
+const queryFirestore = async (collection, document) => {
+    try {
+        if (!collection) {
+            throw new Error('collection name can`t be empty');
+        } else if ( collection && !document ) {
+            // query all documents in a collection
+            const ref = db.collection(collection);
+            const querySnapshot = await ref.get();
+            let result = {};
+            querySnapshot.forEach((doc) => {
+                result[doc.id] = doc.data();
+            })
+            return result;
+        } else if ( collection && document ) {
+            // query single document
+            const ref = db.collection(collection).doc(document);
+            const doc = await ref.get();
+            if (doc.exists) {
+                return doc.data();
+            }
+        }
+    } catch(err) {
+        throw new UserException(err.code, err.message);
+    }
+};
