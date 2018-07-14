@@ -11,6 +11,14 @@ div.header {
     left: 50%;
     transform: translateX(-50%);
     font-weight: bold; }
+  div.header span.back {
+    font-size: 20px;
+    position: absolute;
+    left: 20px;
+    cursor: pointer; }
+    div.header span.back:hover {
+      font-size: 25px;
+      text-decoration: underline; }
   div.header button {
     position: absolute;
     right: 20px; }

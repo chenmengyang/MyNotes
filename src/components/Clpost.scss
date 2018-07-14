@@ -1,51 +1,15 @@
 @import "../assets/scss/breakpoints";
 
-div.superrow {
-    width: 90%;
-    left: 5%;
+p.title {
+    text-align: center;
+    margin: 50px;
+    font-size: 22px;
+    font-weight: bold;
 }
-// div.gridbox {
-//     border: 1px solid red;
-//     width: 90%;
-//     margin-left: 5%;
-//     display: flex;
-//     flex-direction: column;
-//     @include tablet-portrait-up() {
-//         flex-direction: row;
-//         flex-wrap: wrap;
-//         justify-content: flex-start;
-//     }
-//     div.img {
-//         border:1px solid green;
-//         // height: 100px;
-//         width: 100%;
-//         min-height: 350px;
-//         background-position: center center;
-//         background-size: cover;
-//         background-repeat: no-repeat;
-//         margin: 10px auto;
-//         @include tablet-portrait-up() {
-//             width: (100%/2);
-//             min-height: 450px;
-//         }
-//         @include desktop-up() {
-//             max-width: (100%/3);
-//             min-height: 550px;
-//         }
-//     }
-    // img {
-    //     // width: (100%/3);
-    //     max-width: 100%;
-    //     height: auto;
-    //     @include tablet-portrait-up() {
-    //         max-width: (100%/2);
-    //         background-image: black;
-    //     }
-    //     @include desktop-up() {
-    //         max-width: (100%/3);
-    //         background-image: black;
-    //     }
-    //     margin: 10px auto;
-    //     border-radius: 1%;
-    // }
-// }
+
+span.ant-spin-dot {
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+}

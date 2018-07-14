@@ -4,6 +4,14 @@
     .visible-desktop {
       display: block; } }
 
-div.superrow {
-  width: 90%;
-  left: 5%; }
+p.title {
+  text-align: center;
+  margin: 50px;
+  font-size: 22px;
+  font-weight: bold; }
+
+span.ant-spin-dot {
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: 50%; }

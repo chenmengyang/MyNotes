@@ -17,9 +17,6 @@ export class ClPost extends Component {
   }
 
   componentDidMount() {
-    if (this.props.match.params.pid) {
-        console.log(`this.props.match.params.pid is ${this.props.match.params.pid}`);
-    }
   }
 
   randomValue() {
@@ -31,16 +28,23 @@ export class ClPost extends Component {
       <ClConsumer>
         {({ posts, }) => {
             let result = <Spin />;
+            let title = "";
             if (Object.keys(posts).length) {
                 let post = posts[this.props.match.params.pid];
                 let photos = post.photoUrls;
+                title = post.title.replace(/\[.*?]/g,'');
                 result = photos.map((url, index) => <Col className='image-col' lg={8} sm={12} xs={24}>
                   <Card cover={<img alt="example" src={url} />}/>
                 </Col>)
             }
-            return <Row gutter={{ xs: 2, sm: 4, md: 8, lg: 16 }} className={`superrow`}>
-              {result}
-            </Row>;
+            return (
+              <React.Fragment>
+                <p className='title'>{title}</p>
+                <Row gutter={{ xs: 2, sm: 4, md: 8, lg: 16 }} className={`superrow`}>
+                  {result}
+                </Row>
+              </React.Fragment>
+            )
         }}
       </ClConsumer>
     )
