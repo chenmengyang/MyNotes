@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { ClProvider, ClConsumer, } from "../contexts"
+import { ClConsumer, } from "../contexts"
 import { Table, Spin, Icon, } from 'antd';
 import * as R from 'ramda';
 import { Link } from 'react-router-dom';
 import './Clposts.css'
-import { spawn } from 'child_process';
+
+let ClpostState = {}
 
 export class Clposts extends Component {
 
@@ -20,9 +20,20 @@ export class Clposts extends Component {
       this.handleChange = this.handleChange.bind(this);
   }
 
+  componentWillMount() {
+      if (ClpostState) {
+        this.setState(ClpostState);
+      }
+  }
+
+  componentWillUnmount() {
+    ClpostState = this.state;
+  }
+
   handleChange = (pagination, filters, sorter) => {
     console.log('Various parameters', pagination, filters, sorter);
     this.setState({
+      pagination,
       filteredInfo: filters,
       sortedInfo: sorter,
     });
@@ -66,7 +77,7 @@ export class Clposts extends Component {
                 ];
                 // console.log(`arr is ${JSON.stringify(arr)}`);
                 if (dataSource && dataSource.length) {
-                    return <Table dataSource={dataSource} columns={columns} onChange={this.handleChange} />
+                    return <Table handleShowSizeChange={this.state.pagination} dataSource={dataSource} columns={columns} onChange={this.handleChange} />
                 } else {
                     return <Spin />
                 }

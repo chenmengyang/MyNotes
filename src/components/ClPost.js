@@ -33,7 +33,7 @@ export class ClPost extends Component {
                 let post = posts[this.props.match.params.pid];
                 let photos = post.photoUrls;
                 title = post.title.replace(/\[.*?]/g,'');
-                result = photos.map((url, index) => <Col className='image-col' lg={8} sm={12} xs={24}>
+                result = photos.map((url, index) => <Col key={`ph_col_${index}`} className='image-col' lg={8} sm={12} xs={24}>
                   <Card cover={<img alt="example" src={url} />}/>
                 </Col>)
             }
